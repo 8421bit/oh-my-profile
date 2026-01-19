@@ -1,0 +1,14 @@
+# git
+.git
+.github
+
+# OS files
+.DS_Store
+**/.DS_Store
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# Local configs
+*.local.json
