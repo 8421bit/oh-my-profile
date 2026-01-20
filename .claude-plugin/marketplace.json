@@ -5,26 +5,26 @@
     "email": "abcute.studio@gmail.com"
   },
   "metadata": {
-    "description": "Nio - Your Thinking Partner. A skill that helps you think deeper through Socratic questioning, first-principles thinking, and brainstorming.",
-    "version": "2.0.0",
+    "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place.",
+    "version": "3.0.0",
     "homepage": "https://github.com/8421bit/oh-my-profile"
   },
   "plugins": [
     {
       "name": "oh-my-profile",
       "source": "./",
-      "description": "Nio - Your Thinking Partner. A skill that helps you think deeper through Socratic questioning, first-principles thinking, and brainstorming.",
-      "version": "2.0.0",
+      "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place.",
+      "version": "3.0.0",
       "author": {
         "name": "8421bit",
         "email": "abcute.studio@gmail.com"
       },
       "keywords": [
+        "personal-agent-profile",
+        "digital-self",
         "thinking-partner",
-        "socratic",
-        "first-principles",
-        "brainstorming",
-        "knowledge-management"
+        "knowledge-management",
+        "skill-evolution"
       ]
     }
   ]

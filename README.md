@@ -1,22 +1,56 @@
-# oh-my-profile - Your Thinking Partner
+# oh-my-profile - Your Personal Agent Profile
 
-> A thoughtful listener who guides you to think deeper, summarizes, and captures your unique knowledge and skills.
+> Build your Digital Self for AI — so it truly understands who you are, what you know, and what you can do.
+
+---
+
+## Installation
+
+```bash
+# Add marketplace
+/plugin marketplace add 8421bit/oh-my-profile
+
+# Install oh-my-profile
+/skills install oh-my-profile@oh-my-profile
+```
+
+Or directly from GitHub:
+```bash
+/skills install oh-my-profile@github.com/8421bit/oh-my-profile
+```
 
 ---
 
 ## What is oh-my-profile?
 
-`oh-my-profile` is a **Claude Code Skill** that complies with both **Agent Skills specification** and **Obsidian Knowledge Rules**. It's designed to work seamlessly with your Obsidian vault for optimal knowledge management.
+**oh-my-profile** is a **Personal Agent Profile** system.
 
-When you want to:
-- Explore an idea
-- Clarify a problem
-- Make a decision
-- Organize your thoughts
+It's not just a knowledge base, not just a memory system — it's your complete **Digital Self** that AI can understand:
 
-Just talk to oh-my-profile.
+| Component | What It Answers | Nature |
+|-----------|-----------------|--------|
+| `my-profile.md` | **Who you are?** | Identity + Preferences |
+| `knowledge/` | **What you know?** | Experience + Insights |
+| `skills/` | **What you can do?** | Capabilities + Methods |
+| `docs/` | **What you create?** | Deliverables + Outputs |
 
-**Best used with Obsidian** for knowledge organization and linking.
+When you install oh-my-profile, it creates a `~/oh-my-profile/` directory in your home folder:
+
+```
+~/oh-my-profile/
+├── my-profile.md     # Your personal profile (identity, preferences, AI interaction style)
+├── knowledge/        # Your insights & experiences (Obsidian-compatible markdown)
+├── skills/           # Your Agent Skills (reusable capabilities)
+└── docs/             # Your deliverables (PRDs, reports, etc.)
+```
+
+**AI tools like Claude Code read this directory to understand:**
+- Who you are → Personalized responses
+- What you know → Leverage your expertise
+- What you can do → Use your methods
+- What you create → Consistent output style
+
+**Technical:** `oh-my-profile` is a **Claude Code Skill** that complies with both **Agent Skills specification** and **Obsidian Knowledge Rules**. Best used with **Obsidian** for knowledge organization and linking.
 
 ---
 
@@ -36,9 +70,9 @@ Skills (Agent Skills)
 Reusable Capabilities
 ```
 
-**Profile + Knowledge + Skills = Your Digital Avatar in AI World**
+**Profile + Knowledge + Skills = Your Digital Self in AI World**
 
-This is the essence: **从「被动接收」到「主动创造」的递进成长**。
+This is the essence: **从「被动接收」到「主动创造」的递进成长** (From passive receiving to active creating).
 
 ---
 
@@ -93,20 +127,20 @@ When our conversation generates valuable insights:
 
 **Knowledge沉淀**
 - Trigger: You say "Let me save this" or oh-my-profile proactively suggests "要我帮你沉淀一下吗？"
-- Save: `~/omp-workspace/knowledge/[YYYYMMDD]-[topic].md`
+- Save: `~/oh-my-profile/knowledge/[YYYYMMDD]-[topic].md`
 - Format: Follows **Obsidian Markdown Rules** (see `references/obsidian-knowledge-rules.md`)
 
 **Skills沉淀**
 - Trigger: You repeatedly do something, oh-my-profile suggests automation
-- Save: `~/omp-workspace/skills/[skill-name]/SKILL.md`
+- Save: `~/oh-my-profile/skills/[skill-name]/SKILL.md`
 - Format: Follows **Agent Skills规范** (see `references/agent-skills-spec.md`)
 
 **My Profile**
 - Trigger: You say "帮我写个 PRD" or need to update profile
-- Save: `~/omp-workspace/my-profile.md`
+- Save: `~/oh-my-profile/my-profile.md`
 - Format: Follows **Obsidian Markdown Rules** (see `references/obsidian-knowledge-rules.md`)
 - Trigger: You repeatedly do something, oh-my-profile suggests automation
-- Save: `~/omp-workspace/skills/[skill-name]/SKILL.md`
+- Save: `~/oh-my-profile/skills/[skill-name]/SKILL.md`
 - Format: Follows **Agent Skills specification** (see `references/agent-skills-spec.md`）
 
 ---
@@ -123,17 +157,17 @@ When our conversation generates valuable insights:
 
 ---
 
-## Global Workspace
+## User Workspace
 
 oh-my-profile's outputs live in your home directory, independent of any project:
 
 ```
-~/omp-workspace/
+~/oh-my-profile/
 ├── my-profile.md           # Your personal profile
 ├── knowledge/              # Insights (Obsidian spec)
 │   └── [YYYYMMDD]-[topic].md
-├── skills/                 # Capabilities (Agent Skills spec)
-│   └── [skill-name]/SKILL.md
+├── skills/
+│   └── omp-myprofile/       # AI reads this to understand you
 └── docs/                   # Deliverables
        └── [YYYYMMDD]-[name]-prd.md
 ```
@@ -142,57 +176,35 @@ oh-my-profile's outputs live in your home directory, independent of any project:
 
 ---
 
-## Installation
-
-```bash
-# Add marketplace
-/plugin marketplace add 8421bit/oh-my-profile
-
-# Install oh-my-profile
-/skill install oh-my-profile@oh-my-profile
-```
-
-Or directly from GitHub:
-```bash
-/skill install oh-my-profile@github.com/8421bit/oh-my-profile
-```
-
----
-
 ## Project Structure
 
 ```
-oh-my-profile/
+oh-my-profile/                          # Plugin repository
 ├── skills/
-│   └── nio/                               # oh-my-profile Thinking Partner
-│       ├── SKILL.md                            # Core definition
-│       ├── references/                            # Thinking methods & specs
-│       │   ├── socratic.md
-│       │   ├── first-principles.md
-│       │   ├── brainstorming.md
-│       │   ├── obsidian-knowledge-rules.md    # Obsidian Knowledge spec
-│       │   └── agent-skills-spec.md            # Agent Skills spec
-│       └── assets/                                # Templates
-│           ├── my-profile-template.md            # Personal profile
-│           └── prd-template.md                    # PRD template
+│   ├── omp-init/                       # Initialize your profile
+│   │   ├── SKILL.md
+│   │   └── references/
+│   ├── omp-thinker/                    # Thinking Partner
+│   │   ├── SKILL.md
+│   │   ├── references/                 # Thinking methods
+│   │   └── assets/                     # Templates
+│   └── omp-skill-creator/              # Knowledge → Skill evolution
+│       ├── SKILL.md
+│       └── references/
 ├── .claude-plugin/
-│   ├── marketplace.json
-│   └── plugin.json
 ├── README.md
 └── .gitignore
 ```
 
 ---
 
-## My Profile
+## Getting Started
 
-To help AI understand you better, create your personal profile:
+After installation, run `omp-init` to set up your profile:
 
-```
-~/omp-workspace/my-profile.md
-```
-
-First-time use? oh-my-profile will help you fill it step by step using `assets/my-profile-template.md`.
+1. Creates `~/oh-my-profile/` directory
+2. Guides you through filling your profile
+3. Generates `omp-myprofile` skill so AI understands you
 
 ---
 
