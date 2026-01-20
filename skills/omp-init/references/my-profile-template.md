@@ -139,5 +139,5 @@ status: active
 
 ---
 
-> [!note] 此文件保存在 `~/omp-workspace/my-profile.md`
+> [!note] 此文件保存在 `~/oh-my-profile/my-profile.md`
 > Nio 会在每次对话时参考此档案以提供更贴合的陪伴

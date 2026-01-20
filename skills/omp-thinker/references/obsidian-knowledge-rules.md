@@ -10,7 +10,7 @@ description: Obsidian Markdown 知识文件创建规范 - Nio 创建 knowledge �
 ## 1. 文件命名
 
 ```markdown
-~/omp-workspace/knowledge/[YYYYMMDD]-[topic].md
+~/oh-my-profile/knowledge/[YYYYMMDD]-[topic].md
 ```
 
 ## 2. Frontmatter（必需）
@@ -244,4 +244,4 @@ status: new
 
 ---
 
-**创建顺序**：参考本规范 → 创建文件 → 验证格式 → 保存到 `~/omp-workspace/knowledge/`
+**创建顺序**：参考本规范 → 创建文件 → 验证格式 → 保存到 `~/oh-my-profile/knowledge/`

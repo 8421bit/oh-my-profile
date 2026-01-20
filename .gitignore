@@ -1,14 +1,23 @@
-# git
-.git
-.github
+# Ignore everything by default
+*
 
-# OS files
+# Allow these directories (plugin core)
+!.claude-plugin/
+!.claude-plugin/**
+
+# Allow these skill directories
+!skills/
+!skills/omp-init/
+!skills/omp-init/**
+!skills/omp-skill-creator/
+!skills/omp-skill-creator/**
+!skills/omp-thinker/
+!skills/omp-thinker/**
+
+# Allow root files
+!README.md
+!.gitignore
+
+# Always ignore these
 .DS_Store
 **/.DS_Store
-
-# IDE/Editor
-.vscode/
-.idea/
-
-# Local configs
-*.local.json

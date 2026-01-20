@@ -1,10 +1,10 @@
 ---
 name: omp-init
-description: Initialize oh-my-profile system. Creates ~/oh-my-profile/ directory with my-profile.md, knowledge/, skills/, docs/ folders. Guides user through profile setup and generates omp-myprofile skill. Run this when user first installs oh-my-profile or says "setup my profile" or "初始化".
+description: Initialize oh-my-profile system or sync profile updates. Creates ~/oh-my-profile/ directory with my-profile.md, knowledge/, skills/, docs/ folders. Guides user through profile setup and generates omp-myprofile skill. Also triggers when my-profile.md is updated to sync omp-myprofile. Run this when user first installs oh-my-profile, says "setup my profile", "初始化", or when my-profile.md changes.
 license: MIT
 metadata:
   author: 8421bit
-  version: "1.0"
+  version: "1.1"
 ---
 
 # omp-init - Initialize Your Personal Agent Profile
@@ -13,6 +13,8 @@ metadata:
 
 - 首次安装 oh-my-profile 后
 - 用户说「初始化」「setup my profile」「创建我的档案」
+- **用户说「我更新了 profile」「sync profile」「同步画像」**
+- **发现 `~/oh-my-profile/my-profile.md` 有更新**
 
 ## 执行流程
 
@@ -78,6 +80,51 @@ description: [用户名称] 的个人画像。[角色/职业]。偏好：[语言
 - 让 AI 读取 omp-myprofile 了解你
 ```
 
+---
+
+## Profile 同步更新
+
+当检测到 `my-profile.md` 有更新时（用户主动告知或发现文件变化），执行以下流程：
+
+### 触发条件
+
+- 用户说「我更新了 profile」「profile 变了」「sync profile」
+- 用户说「同步画像」「更新我的画像」
+- 在对话中发现 `my-profile.md` 内容与 `omp-myprofile/SKILL.md` 不一致
+
+### 同步流程
+
+```
+1. 读取 ~/oh-my-profile/my-profile.md
+2. 提取关键信息：
+   - 姓名/称呼
+   - 角色/职业
+   - 语言偏好
+   - 沟通风格
+   - 技能专长
+   - AI 交互偏好
+3. 更新 ~/oh-my-profile/skills/omp-myprofile/SKILL.md
+   - 更新 description 字段
+   - 更新内容摘要
+4. 确认同步完成
+```
+
+### 同步确认
+
+```
+Profile 同步完成！
+
+已更新：
+✅ ~/oh-my-profile/skills/omp-myprofile/SKILL.md
+
+变更摘要：
+- [列出主要变更项]
+
+AI 现在可以读取最新的个人画像了。
+```
+
+---
+
 ## 模板引用
 
 - `references/my-profile-template.md` - 个人档案模板
@@ -88,3 +135,5 @@ description: [用户名称] 的个人画像。[角色/职业]。偏好：[语言
 - 如果用户中途退出，保存已填写的内容
 - 可以随时运行再次初始化来更新 profile
 - 生成的 omp-myprofile 应包含足够信息让 AI 快速理解用户
+- **my-profile.md 和 omp-myprofile/SKILL.md 应保持同步**
+- **建议用户更新 profile 后主动告知以触发同步**

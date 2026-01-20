@@ -136,12 +136,9 @@ When our conversation generates valuable insights:
 - Format: Follows **Agent Skills规范** (see `references/agent-skills-spec.md`)
 
 **My Profile**
-- Trigger: You say "帮我写个 PRD" or need to update profile
+- Trigger: You say "Update my profile" or need to update your profile
 - Save: `~/oh-my-profile/my-profile.md`
 - Format: Follows **Obsidian Markdown Rules** (see `references/obsidian-knowledge-rules.md`)
-- Trigger: You repeatedly do something, oh-my-profile suggests automation
-- Save: `~/oh-my-profile/skills/[skill-name]/SKILL.md`
-- Format: Follows **Agent Skills specification** (see `references/agent-skills-spec.md`）
 
 ---
 
