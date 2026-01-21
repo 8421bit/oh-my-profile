@@ -1,11 +1,4 @@
 ---
-name: my-skills
-description: 技能索引模板 - 包含技能规划和技能目录，帮助 AI 了解用户的能力结构
----
-
-# 技能索引
-
----
 title: 我的技能索引
 date: {{YYYY-MM-DD}}
 tags:

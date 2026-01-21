@@ -1,8 +1,3 @@
----
-name: my-knowledge
-description: 知识索引模板 - 包含学习规划和知识目录，帮助 AI 了解用户的知识结构
----
-
 # 知识索引
 
 ---
