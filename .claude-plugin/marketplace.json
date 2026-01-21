@@ -6,15 +6,15 @@
   },
   "metadata": {
     "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place.",
-    "version": "3.0.0",
+    "version": "1.0.0",
     "homepage": "https://github.com/8421bit/oh-my-profile"
   },
   "plugins": [
     {
       "name": "oh-my-profile",
       "source": "./",
-      "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place.",
-      "version": "3.0.0",
+      "description": "Your Personal Agent Profile. Build your Digital Self for AI. Contains 3 meta skills: oh-my-profile, oh-my-knowledge, oh-my-skills.",
+      "version": "1.0.0",
       "author": {
         "name": "8421bit",
         "email": "abcute.studio@gmail.com"
@@ -22,9 +22,9 @@
       "keywords": [
         "personal-agent-profile",
         "digital-self",
-        "thinking-partner",
         "knowledge-management",
-        "skill-evolution"
+        "skill-discovery",
+        "ai-personalization"
       ]
     }
   ]

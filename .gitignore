@@ -5,18 +5,22 @@
 !.claude-plugin/
 !.claude-plugin/**
 
-# Allow these skill directories
+# Allow skill directories
 !skills/
-!skills/omp-init/
-!skills/omp-init/**
-!skills/omp-skill-creator/
-!skills/omp-skill-creator/**
-!skills/omp-thinker/
-!skills/omp-thinker/**
+!skills/oh-my-profile/
+!skills/oh-my-profile/**
+!skills/oh-my-knowledge/
+!skills/oh-my-knowledge/**
+!skills/oh-my-skills/
+!skills/oh-my-skills/**
 
 # Allow root files
 !README.md
+!README_CN.md
 !.gitignore
+
+# User data files (created at runtime, not tracked)
+knowledge/
 
 # Always ignore these
 .DS_Store

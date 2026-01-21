@@ -1,19 +1,28 @@
 ---
-name: omp-skill-creator
+name: oh-my-skills
 description: |
-  Knowledge to Skill evolution system. Identifies reusable patterns from work sessions and knowledge base,
-  creates skills proposals for user decision. Triggers: (1) User says "分析知识库" or "create skill",
-  (2) "这个我经常做" or repetitive work detected, (3) Non-obvious solutions discovered after >10min investigation,
-  (4) Periodic review of ~/oh-my-profile/knowledge/ for extractable patterns.
+  Skill discovery and creation - transforms tacit experience into explicit, reusable Agent Skills.
+  Identifies repetitive patterns, extracts methodologies, and creates personal skills in ~/oh-my-profile/skills/.
+  Use when:
+  (1) User says "这个可以做成技能"/"create skill"/"make this a skill"/"自动化这个" - capture current pattern
+  (2) User says "从知识创建技能"/"分析知识库"/"extract skills from knowledge" - analyze knowledge for patterns
+  (3) User says "规划我的技能"/"plan my skills"/"我缺什么技能" - gap analysis based on profile
+  (4) User repeatedly does similar task (3+ times) - suggest skill extraction
+  (5) User discovers non-obvious solution after significant investigation - suggest capturing
+  (6) User says "我的技能库"/"my skills"/"show my skills" - review skills index
+  (7) User says "安装技能"/"install skill"/"推荐技能" - recommend and install open-source skills
+  (8) User asks "这个流程可以复用吗"/"can I reuse this"/"这个方法论" - evaluate reusability
+  Covers: pattern recognition, Agent Skills specification, quality gates, skill lifecycle management.
 license: MIT
 metadata:
   author: 8421bit
-  version: "2.1"
+  version: "1.0.0"
 ---
 
-# omp-skill-creator - Knowledge to Skill Evolution
+# oh-my-skills - 技能发现与沉淀
 
-> 从知识沉淀到技能进化的持续学习系统
+> 从知识沉淀到技能进化的持续学习系统。
+> 将隐性经验显性化、模块化，实现从「使用 AI」到「训练 AI」的闭环。
 
 ---
 
@@ -23,9 +32,9 @@ metadata:
 
 **Context window 是公共资源。** 每个 skill 都要与系统提示、对话历史、其他 Skills 共享上下文空间。
 
-- **默认假设：llm 已经很聪明**
-- 只添加 llm 不知道的内容
-- 对每段信息质疑：「llm 真的需要这个？」「这段内容值得它的 token 成本吗？」
+- **默认假设：LLM 已经很聪明**
+- 只添加 LLM 不知道的内容
+- 对每段信息质疑：「LLM 真的需要这个？」「这段内容值得它的 token 成本吗？」
 - **偏好简洁的示例，而非冗长的解释**
 
 ### 自由度匹配
@@ -47,7 +56,7 @@ metadata:
 ### 被动触发（用户主动调用）
 - 用户说「分析知识库」「从知识创建技能」
 - 用户说「我总是在做这件事，帮我自动化」
-- 用户说「查看技能提案」
+- 用户说「查看技能提案」「这个可以做成技能」
 
 ### 主动触发（自动识别 → 静默提案）
 完成任务后，如果符合以下条件，启动**静默提案模式**：
@@ -57,7 +66,7 @@ metadata:
 - **工作流优化**：发现更高效的多步骤流程
 
 ### 定期触发
-- 每周分析 `~/oh-my-profile/knowledge/` 目录
+- 定期分析 `~/oh-my-profile/knowledge/` 目录
 - 发现 ≥3 个相似主题的知识文档时
 
 ---
@@ -70,21 +79,9 @@ metadata:
 
 ```
 1. 识别到可提取模式
-2. 静默记录提案到 ~/oh-my-profile/skills-proposals.md
-3. 提示用户："发现一个可能值得创建的技能，查看提案？"
-4. 用户确认后再执行创建流程
-```
-
-### skills-proposals.md 格式
-
-```markdown
-# 技能提案
-
-## [YYYY-MM-DD] [提案名称]
-- **识别来源**：[知识文档名/工作会话描述]
-- **建议技能**：[一句话描述]
-- **触发场景**：[何时使用这个技能]
-- **状态**：待处理 | 已创建 | 已拒绝
+2. 提示用户：「发现一个可能值得创建的技能，要我记录下来吗？」
+3. 用户确认后，更新 ~/oh-my-profile/my-skills.md 的「技能推荐」部分
+4. 用户决定是否执行创建流程
 ```
 
 ---
@@ -92,6 +89,8 @@ metadata:
 ## 执行流程（6 步）
 
 ### 第一步：用具体示例理解需求
+
+使用苏格拉底式对话引导用户：
 
 ```
 问用户：
@@ -128,7 +127,7 @@ metadata:
 
 | 模式类型 | 识别信号 | 示例 |
 |---------|---------|------|
-| **重复工作流** | 多个文件描述相似步骤 | 「每次写 PRD 我都会...」 |
+| **重复工作流** | 多个文件描述相似步骤 | 「每次写报告我都会...」 |
 | **方法论** | 多次提及同一思考框架 | 「我用 MECE 分析问题」 |
 | **工具链** | 固定的工具使用组合 | 「先用 X，再用 Y，最后 Z」 |
 | **决策规则** | 条件判断模式 | 「如果...就...」 |
@@ -358,8 +357,20 @@ Skill 只包含 AI agent 完成任务所需的信息。
 
 ---
 
+## 更新索引
+
+创建或更新技能后：
+
+1. 更新 `~/oh-my-profile/my-skills.md`
+   - 在「自研技能」或「已安装技能」下添加链接
+   - 更新 total 计数
+   - 更新「最近更新」
+2. 同步到 `../oh-my-profile/references/my-skills.md`
+
+---
+
 ## 参考
 
 - `references/agent-skills-spec.md` - Agent Skills 规范
 - 用户的 `~/oh-my-profile/knowledge/` - 知识源
-- 用户的 `~/oh-my-profile/skills-proposals.md` - 技能提案
+- 用户的 `~/oh-my-profile/my-skills.md` - 技能索引

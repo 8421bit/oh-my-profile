@@ -2,55 +2,70 @@
 
 > Build your Digital Self for AI — so it truly understands who you are, what you know, and what you can do.
 
+[中文文档](README_CN.md)
+
 ---
 
 ## Installation
 
-```bash
-# Add marketplace
-/plugin marketplace add 8421bit/oh-my-profile
+**Recommended: Clone to home directory**
 
-# Install oh-my-profile
-/skills install oh-my-profile@oh-my-profile
+```bash
+# Clone to ~/oh-my-profile/
+git clone https://github.com/8421bit/oh-my-profile.git ~/oh-my-profile
+
+# Add as local marketplace
+/plugin marketplace add ~/oh-my-profile/.claude-plugin/marketplace.json
+
+# Install skills
+/skills install oh-my-profile
 ```
 
-Or directly from GitHub:
-```bash
-/skills install oh-my-profile@github.com/8421bit/oh-my-profile
-```
+---
+
+## Quick Start
+
+After installation, try saying to AI:
+
+| Scenario | You Say | AI Does |
+|----------|---------|---------|
+| **Initialize** | "帮我初始化 oh-my-profile" | Creates ~/oh-my-profile/, guides profile setup |
+| **Save Knowledge** | "帮我记一下" / "Save this" | Extracts insights, saves to knowledge/ |
+| **Organize Content** | "整理这个" + URL/text | Parses and structures content |
+| **Create Skill** | "这个可以做成技能吗" / "Create skill" | Guides personal skill creation |
+| **Plan Skills** | "规划我的技能" / "Plan my skills" | Gap analysis + recommends open-source skills |
+| **Sync Profile** | "同步档案" / "Sync profile" | Manual sync user directory to references |
+
+**Note**: AI automatically reads your profile for personalized service — no manual trigger needed.
 
 ---
 
 ## What is oh-my-profile?
 
-**oh-my-profile** is a **Personal Agent Profile** system.
+**oh-my-profile** is a **Personal Agent Profile** system — your complete **Digital Self** that AI can understand.
 
-It's not just a knowledge base, not just a memory system — it's your complete **Digital Self** that AI can understand:
+It's not just a knowledge base, not just a memory system. It's a systematic approach to help AI truly know you:
 
 | Component | What It Answers | Nature |
 |-----------|-----------------|--------|
-| `my-profile.md` | **Who you are?** | Identity + Preferences |
-| `knowledge/` | **What you know?** | Experience + Insights |
-| `skills/` | **What you can do?** | Capabilities + Methods |
-| `docs/` | **What you create?** | Deliverables + Outputs |
+| `my-profile.md` | **Who you are?** | Identity + Preferences + Goals |
+| `my-knowledge.md` | **What you know?** | Knowledge Index + Learning Plan |
+| `my-skills.md` | **What you can do?** | Skills Index + Development Path |
+| `knowledge/` | Accumulated insights | Experience + Learnings |
+| `skills/` | Personal skills | Capabilities + Methods |
 
 When you install oh-my-profile, it creates a `~/oh-my-profile/` directory in your home folder:
 
 ```
 ~/oh-my-profile/
-├── my-profile.md     # Your personal profile (identity, preferences, AI interaction style)
-├── knowledge/        # Your insights & experiences (Obsidian-compatible markdown)
-├── skills/           # Your Agent Skills (reusable capabilities)
-└── docs/             # Your deliverables (PRDs, reports, etc.)
+├── my-profile.md     # Your identity (who you are, preferences, goals)
+├── my-knowledge.md   # Knowledge index + learning plan
+├── my-skills.md      # Skills index + development path
+├── knowledge/        # Your insights & experiences (Obsidian-compatible)
+└── skills/           # Your Agent Skills (reusable capabilities)
 ```
 
-**AI tools like Claude Code read this directory to understand:**
-- Who you are → Personalized responses
-- What you know → Leverage your expertise
-- What you can do → Use your methods
-- What you create → Consistent output style
-
-**Technical:** `oh-my-profile` is a **Claude Code Skill** that complies with both **Agent Skills specification** and **Obsidian Knowledge Rules**. Best used with **Obsidian** for knowledge organization and linking.
+**AI reads this to provide personalized service.**
 
 ---
 
@@ -61,96 +76,132 @@ When you install oh-my-profile, it creates a `~/oh-my-profile/` directory in you
 ```
 Information
      ↓
-Thinking/Digestion/Organization
+Thinking / Digestion / Organization
      ↓
-Knowledge
+Knowledge  →  my-knowledge.md + knowledge/
      ↓
-Skills (Agent Skills)
+Skills (Agent Skills)  →  my-skills.md + skills/
      ↓
 Reusable Capabilities
 ```
 
 **Profile + Knowledge + Skills = Your Digital Self in AI World**
 
-This is the essence: **从「被动接收」到「主动创造」的递进成长** (From passive receiving to active creating).
+From passive receiving to active creating — this is continuous personal evolution.
+
+---
+
+## 3 Meta Skills
+
+oh-my-profile includes 3 built-in "Meta Skills" that help you build and maintain your digital self:
+
+| Skill | Function | Trigger Examples |
+|-------|----------|------------------|
+| **oh-my-profile** | Core entry point + Initialize + Profile sync | Any conversation, "初始化", "同步档案" |
+| **oh-my-knowledge** | Capture insights from conversations, URLs, files | "帮我记一下", "整理这个", "Save this" |
+| **oh-my-skills** | Discover patterns and create reusable skills | "创建技能", "分析知识库", "Create skill" |
+
+### oh-my-profile (Core Entry Point)
+
+The central skill that AI reads to understand you completely.
+
+**Capabilities:**
+- Auto-sync: Detects changes in ~/oh-my-profile/ and updates references
+- Load your complete profile from `references/`
+- Initialize `~/oh-my-profile/` directory on first run
+- Guide profile setup through Socratic dialogue
+- Analyze profile to plan skills (Gap analysis)
+
+### oh-my-knowledge (Knowledge Capture)
+
+Your thinking partner that helps capture and organize insights.
+
+**Triggers:**
+- "帮我记一下" / "Save this" → Save conversation insights
+- "整理这个" + URL/text → Organize provided content
+- "整理这些文件" + folder → Batch process files
+- Proactive suggestion after insightful conversation
+
+**Personality:**
+- Listener - Truly listens, doesn't interrupt
+- Encouraging not fawning - "That's interesting," not "Amazing!"
+- Challenging not nitpicking - Valuable questioning
+- Wise but humble - Has insights, knows you're the expert
+
+### oh-my-skills (Skill Discovery)
+
+Knowledge-to-Skill evolution system.
+
+**Triggers:**
+- "这个可以做成技能" / "Create skill" → Capture current pattern
+- "从知识创建技能" / "分析知识库" → Analyze knowledge for patterns
+- Automatic: Detects repetitive work (3+ times)
+- Non-obvious solution discovered after >10min investigation
+
+**Quality Gates:**
+- Reusable? Can help future tasks?
+- Non-trivial? Not just documentation lookup?
+- Specific? Clear trigger conditions?
+- Verified? Actually works?
+
+---
+
+## How It Works
+
+### Phase 1: Profile Setup
+
+```
+1. Install oh-my-profile → Creates ~/oh-my-profile/
+2. AI guides you through profile setup (Socratic dialogue)
+3. Generates my-knowledge.md (learning plan) and my-skills.md (skill gaps)
+4. Syncs to oh-my-profile/references/ for AI to read
+```
+
+### Phase 2: Knowledge Capture
+
+```
+Your conversation → AI listens and confirms understanding
+                 → Chooses thinking method (Socratic, First Principles, etc.)
+                 → Asks questions, you discover insights
+                 → Suggests: "Should I save this insight?"
+                 → Saves to ~/oh-my-profile/knowledge/
+                 → Updates my-knowledge.md index
+```
+
+### Phase 3: Skill Discovery
+
+```
+Repetitive work detected → AI suggests: "Can we make this a skill?"
+                        → Guides skill definition through dialogue
+                        → Creates ~/oh-my-profile/skills/[skill-name]/
+                        → Updates my-skills.md index
+```
+
+### Phase 4: Continuous Evolution
+
+```
+my-profile.md (your goals)
+       ↓
+my-knowledge.md (what to learn) + my-skills.md (what to master)
+       ↓
+knowledge/ (accumulated) + skills/ (created)
+       ↓
+You grow closer to your profile goals
+```
 
 ---
 
 ## Key Differentiators
 
-| Other AI Assistants | oh-my-profile |
-|-------------------|---------------|
+| Traditional AI | oh-my-profile |
+|----------------|---------------|
 | "Use once, discard" | "Leave a trace" |
 | Give answers immediately | Guide through questions |
-| Generic responses | Personalized thinking |
+| Generic responses | Personalized to your profile |
 | Tool-focused | Relationship-focused |
 | No memory | Continuous evolution |
-| Generic format | ✅ Obsidian Markdown spec |
-| ❌ Not unique | ✅ Your digital self |
-
----
-
-## How oh-my-profile Works
-
-### Phase 1: Active Listening
-
-```
-You speak → oh-my-profile listens (really listens, doesn't interrupt)
-            → oh-my-profile confirms understanding ("I get what you mean...")
-            → Ensures we're on the same channel
-```
-
-### Phase 2: Choose Thinking Method
-
-Based on your situation, oh-my-profile selects the right approach:
-
-| Your State | Method | Reference |
-|-------------|--------|-----------|
-| "I have an idea..." | Socratic questioning | `references/socratic.md` |
-| "I don't know how to choose..." | First principles | `references/first-principles.md` |
-| "I want new directions..." | Brainstorming | `references/brainstorming.md` |
-| "This process I do often..." | Create Skill | `references/agent-skills-spec.md` |
-| "Help me write a PRD..." | Product Documentation | `assets/prd-template.md` |
-
-### Phase 3: Socratic Dialogue
-
-```
-oh-my-profile asks a question (not giving answers)
-  → You discover new insights
-  → oh-my-profile digs deeper
-  → Repeat until you say "Enough" or "I get it"
-```
-
-### Phase 4: Leave a Trace
-
-When our conversation generates valuable insights:
-
-**Knowledge沉淀**
-- Trigger: You say "Let me save this" or oh-my-profile proactively suggests "要我帮你沉淀一下吗？"
-- Save: `~/oh-my-profile/knowledge/[YYYYMMDD]-[topic].md`
-- Format: Follows **Obsidian Markdown Rules** (see `references/obsidian-knowledge-rules.md`)
-
-**Skills沉淀**
-- Trigger: You repeatedly do something, oh-my-profile suggests automation
-- Save: `~/oh-my-profile/skills/[skill-name]/SKILL.md`
-- Format: Follows **Agent Skills规范** (see `references/agent-skills-spec.md`)
-
-**My Profile**
-- Trigger: You say "Update my profile" or need to update your profile
-- Save: `~/oh-my-profile/my-profile.md`
-- Format: Follows **Obsidian Markdown Rules** (see `references/obsidian-knowledge-rules.md`)
-
----
-
-## oh-my-profile's Personality
-
-| Trait | How it manifests |
-|--------|------------------|
-| **倾听者 (Listener)** | Listens first, truly listens, doesn't rush to answers |
-| **鼓励但不谄媚 (Encouraging not fawning)** | Says "That's an interesting perspective," not "That's amazing!" |
-| **挑战但不挑刺 (Challenging not nitpicking)** | Offers valuable questioning, not fault-finding |
-| **睿智而谦虚 (Wise but humble)** | Has insights, but knows you're the expert |
-| **隐形的情绪支持 (Invisible emotional support)** | You may not feel it, but it's always there |
+| ❌ Starts from zero | ✅ Knows your history |
+| ❌ Generic advice | ✅ Based on your goals |
 
 ---
 
@@ -160,16 +211,69 @@ oh-my-profile's outputs live in your home directory, independent of any project:
 
 ```
 ~/oh-my-profile/
-├── my-profile.md           # Your personal profile
-├── knowledge/              # Insights (Obsidian spec)
-│   └── [YYYYMMDD]-[topic].md
-├── skills/
-│   └── omp-myprofile/       # AI reads this to understand you
-└── docs/                   # Deliverables
-       └── [YYYYMMDD]-[name]-prd.md
+├── my-profile.md           # Your identity + preferences + goals
+├── my-knowledge.md         # Knowledge index + learning plan
+├── my-skills.md            # Skills index + development path + Gap analysis
+├── knowledge/              # Knowledge files (Obsidian-compatible)
+│   └── YYYY-MM-DD_topic.md
+└── skills/                 # Personal skills
+    └── [skill-name]/
+        └── SKILL.md
 ```
 
-**无论在哪个项目目录运行，oh-my-profile 的产出物都保存在同一个地方。**
+**Data lives here, user can manually edit. This is the source of truth.**
+
+---
+
+## Dual-Track Design: Obsidian + AI
+
+`~/oh-my-profile/` is simultaneously **an Obsidian vault** and **an AI-readable profile**:
+
+```
+┌─────────────────────────────────────────────────┐
+│              ~/oh-my-profile/                   │
+│                                                 │
+│   ┌───────────────┐     ┌───────────────┐      │
+│   │   AI Track    │     │  User Track   │      │
+│   │               │     │               │      │
+│   │ oh-my-*       │     │  Obsidian     │      │
+│   │ skills        │     │  Direct Edit  │      │
+│   │ read/write    │     │               │      │
+│   └───────┬───────┘     └───────┬───────┘      │
+│           │                     │              │
+│           └──────────┬──────────┘              │
+│                      │                         │
+│           Same Obsidian Vault                  │
+│           (Markdown + Wikilinks + Tags)        │
+└─────────────────────────────────────────────────┘
+```
+
+### AI Track
+- **oh-my-profile**: Reads your complete profile, initializes directory, auto-syncs changes
+- **oh-my-knowledge**: Captures insights, creates knowledge files
+- **oh-my-skills**: Discovers patterns, creates skill files
+
+### User Track
+- Open `~/oh-my-profile/` as an **Obsidian vault**
+- Edit files directly with Obsidian's visual editor
+- Use **wikilinks** `[[note]]` to connect knowledge
+- Use **Graph View** to visualize knowledge structure
+- Use **Tags** and **Properties** for organization
+
+### Why This Design?
+
+| Benefit | Description |
+|---------|-------------|
+| **Best of both worlds** | AI captures, user curates |
+| **No lock-in** | Standard markdown, works without AI |
+| **Visual management** | Obsidian's graph view, search, backlinks |
+| **Continuous evolution** | AI and user both contribute |
+
+**Recommended workflow:**
+1. AI captures insights during conversations → `knowledge/`
+2. User reviews and organizes in Obsidian
+3. AI suggests skills based on knowledge patterns
+4. User decides what to keep and refine
 
 ---
 
@@ -178,16 +282,24 @@ oh-my-profile's outputs live in your home directory, independent of any project:
 ```
 oh-my-profile/                          # Plugin repository
 ├── skills/
-│   ├── omp-init/                       # Initialize your profile
+│   ├── oh-my-profile/                  # Core entry point
 │   │   ├── SKILL.md
 │   │   └── references/
-│   ├── omp-thinker/                    # Thinking Partner
+│   │       ├── my-profile.md           # Template → User data
+│   │       ├── my-knowledge.md         # Template → User data
+│   │       └── my-skills.md            # Template → User data
+│   ├── oh-my-knowledge/                # Knowledge capture
 │   │   ├── SKILL.md
-│   │   ├── references/                 # Thinking methods
-│   │   └── assets/                     # Templates
-│   └── omp-skill-creator/              # Knowledge → Skill evolution
+│   │   └── references/
+│   │       ├── obsidian-knowledge-rules.md
+│   │       ├── socratic.md
+│   │       ├── first-principles.md
+│   │       ├── brainstorming.md
+│   │       └── reverse-thinking.md
+│   └── oh-my-skills/                   # Skill discovery
 │       ├── SKILL.md
 │       └── references/
+│           └── agent-skills-spec.md
 ├── .claude-plugin/
 ├── README.md
 └── .gitignore
@@ -197,62 +309,60 @@ oh-my-profile/                          # Plugin repository
 
 ## Getting Started
 
-After installation, run `omp-init` to set up your profile:
+After installation:
 
-1. Creates `~/oh-my-profile/` directory
-2. Guides you through filling your profile
-3. Generates `omp-myprofile` skill so AI understands you
+1. **First run** - AI detects `~/oh-my-profile/` doesn't exist
+2. **Creates structure** - Directory with template files
+3. **Guides profile** - Socratic dialogue to fill my-profile.md
+4. **Plans growth** - Generates learning plan and skill gaps
+5. **Ready** - AI now understands you for all future conversations
 
 ---
 
 ## Evolution Philosophy
 
-**进化 = 随着时间增长，知识积累，技能扩展**
+Your digital self evolves as you:
+- Have more conversations → Knowledge accumulates
+- Recognize patterns → Skills get extracted
+- Refine your goals → Plans update accordingly
 
-Your profile evolves as you:
-- Have more conversations
-- Accumulate unique insights
-- Build reusable skills
-- Discover your thinking patterns
-
-**oh-my-profile helps this evolution by:**
+**oh-my-profile facilitates this by:**
 - Proactively capturing insights you might miss
-- Recognizing patterns in your work
-- Suggesting new skills to automate repetitive workflows
+- Recognizing repetitive work patterns
+- Suggesting skills to automate workflows
+- Tracking progress toward your goals
 
 ---
 
 ## Who is This For?
 
+### For Knowledge Workers
+Build a **personal knowledge base** that AI can leverage for better assistance.
+
 ### For Developers
+Create a **personal skill library** of reusable Agent Skills.
 
-Build your own **personal skill library** based on `references/agent-skills-spec.md`.
+### For Lifelong Learners
+Track your **learning journey** with structured knowledge and skill development.
 
-### For Product Managers
-
-Create a structured **personal knowledge base** for product decisions and strategies.
-
-### For Thinkers
-
-Enhance your **digital avatar** by continuously refining your thinking patterns and communication style.
+### For AI Power Users
+Build a true **AI partnership** where the AI understands your context over time.
 
 **Works best with Obsidian** for linking notes and building a knowledge graph.
-
-### For Everyone
-
-Build a relationship with your **digital self**—a thinking partner that grows with you over time.
 
 ---
 
 ## Specifications Compliance
 
-**Agent Skills Specification**:
-- Follows the official Agent Skills format defined in `references/agent-skills-spec.md`
+**Agent Skills Specification:**
+- Follows the official Agent Skills format
 - Supports progressive disclosure and dynamic loading
+- See `oh-my-skills/references/agent-skills-spec.md`
 
-**Obsidian Knowledge Specification**:
-- Follows the Obsidian Flavored Markdown format defined in `references/obsidian-knowledge-rules.md`
+**Obsidian Knowledge Specification:**
+- Follows Obsidian Flavored Markdown format
 - Supports wikilinks, callouts, properties, and all Obsidian features
+- See `oh-my-knowledge/references/obsidian-knowledge-rules.md`
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "oh-my-profile",
-  "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place.",
-  "version": "3.0.0",
+  "description": "Your Personal Agent Profile. Build your Digital Self for AI — Profile, Knowledge, Skills, all in one place. Contains 3 meta skills: oh-my-profile (core entry), oh-my-knowledge (knowledge capture), oh-my-skills (skill discovery).",
+  "version": "1.0.0",
   "author": {
     "name": "8421bit",
     "email": "abcute.studio@gmail.com"
@@ -10,8 +10,8 @@
   "keywords": [
     "personal-agent-profile",
     "digital-self",
-    "thinking-partner",
     "knowledge-management",
-    "skill-evolution"
+    "skill-discovery",
+    "ai-personalization"
   ]
 }
